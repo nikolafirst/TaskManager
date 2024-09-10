@@ -165,7 +165,7 @@ func main() {
 						save,
 						// Изменение записи в БД
 						func() {
-							db.Find(&Task{}, "Id =?", tasks[id].Id).Updates(
+							db.Model(&Task{}).Where("id=?", tasks[id].Id).Updates(
 								Task{
 									Title:       editTitle.Text,
 									Description: editDescription.Text,
